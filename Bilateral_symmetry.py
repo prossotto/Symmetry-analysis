@@ -3,7 +3,8 @@ import pandas as pd
 
 class BilateralSymmetry():
     """The algorithm generates a symmetry score based on cell dispersion in the organ of interest
-    The algorithm works together with ImageJ to obtain X and Y coordinates of each cell"""
+    The algorithm works together with ImageJ to obtain X and Y coordinates of each cell
+    The values of symmetry are between 0 and 1, where 1 is a complete perfect symmetry and 0 shows non-symmetric relationship between hemispheres of the organ"""
 
     def __init__(self, data_f, symmetry_temp, find=False):
         self.y_sym = 0
@@ -58,6 +59,6 @@ class BilateralSymmetry():
 
         a = (((y[:, 0] - x[:, 0]) ** 2).sum() + ((y[:, 1] - x[:, 1]) ** 2).sum())
         b = (((y[:, 0] - y[:, 0].mean()) ** 2).sum() + ((y[:, 1] - y[:, 1].mean()) ** 2).sum())
-        symmetric_score_2 = (b - a) / b
+        symmetry_score = (b - a) / b
 
-        return max(0, symmetric_score_2), x, y
+        return max(0, symmetry_score), x, y
