@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 
 class BilateralSymmetry():
+    """The algorithm generates a symmetry score based on cell dispersion in the organ of interest
+    The algorithm works together with ImageJ to obtain X and Y coordinates of each cell"""
 
     def __init__(self, data_f, symmetry_temp, find=False):
         self.y_sym = 0
